@@ -1,0 +1,28 @@
+---
+version: "3"
+services:
+
+  server:
+    image: haproxytechblog/grpc-sample-server
+    build:
+      context: ./sample
+      dockerfile: Dockerfile.server
+
+  haproxy:
+    image: haproxy:1.9
+    volumes:
+    - "./sample/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg"
+    - "./sample/creds/haproxy.pem:/usr/local/etc/haproxy/pem/haproxy.pem"
+    depends_on:
+    - server
+
+  client:
+    image: haproxytechblog/grpc-sample-client
+    build:
+      context: ./sample
+      dockerfile: Dockerfile.client
+    environment:
+    - "SERVER_ADDRESS=haproxy:3001"
+    - "TLS_CERT=haproxy.crt"
+    depends_on:
+    - haproxy

@@ -25,7 +25,7 @@ type codenameGenerator struct {
 
 func newCodenameGenerator() codenameGenerator {
 	cg := codenameGenerator{}
-	cg.Adverbs = []string{"Anxious", "Artistic", "Bold", "Cheerful", "Curious", "Daring", "Fearless", "Gallant", "Heroic", "Languid", "Lucid", "Mighty", "Nefarious", "Quizical", "Sleepy", "Tireless", "Vigorous", "Wicked"}
+	cg.Adverbs = []string{"Anxious", "Artistic", "Bold", "Cheerful", "Curious", "Daring", "Fearless", "Gallant", "Heroic", "Languid", "Lucid", "Mighty", "Nefarious", "Quizzical", "Sleepy", "Tireless", "Vigorous", "Wicked"}
 	cg.Animals = []string{"Aardvark", "Badger", "Coyote", "Dolphin", "Fox", "Giraffe", "Heron", "Lizard", "Marmot", "Nighthawk", "Quail", "Shark", "Tiger", "Vulture", "Warthog"}
 	cg.Scientists = []string{"Curie", "Dalton", "Davy", "Faraday", "Franklin", "Germain", "Hodgkin", "Hopper", "Lovelace", "Meitner", "Newton", "Salk", "Tesla", "Youyou"}
 	return cg

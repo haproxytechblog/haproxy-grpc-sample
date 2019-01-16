@@ -13,6 +13,7 @@ services:
     volumes:
     - "./sample/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg"
     - "./sample/creds/haproxy.pem:/usr/local/etc/haproxy/pem/haproxy.pem"
+    - "./sample/creds/server.crt:/usr/local/etc/haproxy/pem/server.crt"
     depends_on:
     - server
 

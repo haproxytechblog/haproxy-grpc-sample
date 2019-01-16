@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"log"
@@ -44,6 +45,12 @@ func (cg *codenameGenerator) generate(category string) string {
 }
 
 type codenameServer struct{}
+
+func (s *codenameServer) GetCodename(ctx context.Context, request *creator.NameRequest) (*creator.NameResult, error) {
+	generator := newCodenameGenerator()
+	codename := generator.generate(request.Category)
+	return &creator.NameResult{Name: codename}, nil
+}
 
 func (s *codenameServer) KeepGettingCodenames(stream creator.CodenameCreator_KeepGettingCodenamesServer) error {
 	// get some metadata

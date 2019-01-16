@@ -37,8 +37,21 @@ func main() {
 	// Optional: add some metadata
 	ctx = metadata.AppendToOutgoingContext(ctx, "mysecretpassphrase", "abc123")
 
-	fmt.Println("Generating codenames...")
+	getCodenamesStreamingExample(ctx, client)
+	// getSingleCodenameAndExitExample(ctx, client, "Science")
+}
 
+func getSingleCodenameAndExitExample(ctx context.Context, client creator.CodenameCreatorClient, category string) {
+	result, err := client.GetCodename(ctx, &creator.NameRequest{Category: category})
+	if err != nil {
+		log.Fatalf("Could not get result, %v", err)
+	}
+
+	log.Printf("Codename result: %s", result)
+}
+
+func getCodenamesStreamingExample(ctx context.Context, client creator.CodenameCreatorClient) {
+	fmt.Println("Generating codenames...")
 	stream, err := client.KeepGettingCodenames(ctx)
 
 	if err != nil {

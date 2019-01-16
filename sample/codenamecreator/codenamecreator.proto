@@ -11,5 +11,6 @@ message NameResult {
 }
 
 service CodenameCreator {
+    rpc GetCodename(NameRequest) returns (NameResult) {}
     rpc KeepGettingCodenames(stream NameRequest) returns (stream NameResult) {}
 }

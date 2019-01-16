@@ -9,11 +9,11 @@ services:
       dockerfile: Dockerfile.server
 
   haproxy:
-    image: haproxy:1.9
+    image: haproxytech/haproxy-ubuntu:1.9.2
     volumes:
-    - "./sample/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg"
-    - "./sample/creds/haproxy.pem:/usr/local/etc/haproxy/pem/haproxy.pem"
-    - "./sample/creds/server.crt:/usr/local/etc/haproxy/pem/server.crt"
+    - "./sample/haproxy/haproxy.cfg:/etc/haproxy/haproxy.cfg"
+    - "./sample/creds/haproxy.pem:/etc/haproxy/pem/haproxy.pem"
+    - "./sample/creds/server.crt:/etc/haproxy/pem/server.crt"
     depends_on:
     - server
 
